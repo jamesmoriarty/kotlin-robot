@@ -1,35 +1,41 @@
+
 import robot.Board
+import robot.ICommand
+import robot.NullCommand
 import robot.Robot
-import robot.Place
+
+fun factory(args: Array<String>): ICommand {
+    try {
+        var className          = args.first().capitalize()
+        var commandClass       = Class.forName("robot.$className").kotlin
+        var command : ICommand = commandClass.constructors.first().call(args) as ICommand
+
+        return command
+    }
+    catch (e: IllegalArgumentException) {
+        println("wrong args: ${args.toString()}")
+        return NullCommand(*args)
+    }
+    catch (e: ArrayIndexOutOfBoundsException) {
+        println("wrong number of args: ${args.toString()}")
+        return NullCommand(*args)
+    }
+    catch (e: ClassNotFoundException) {
+        println("command not found args: ${args.toString()}")
+        return NullCommand(*args)
+    }
+}
 
 fun main(args: Array<String>) {
     var board         = Board()
     var robot: Robot? = null
 
     while(true) {
-        var tokens = readLine()!!.toLowerCase().split("(,| )+".toRegex())
+        print("> ")
 
+        var tokens             = readLine()!!.toLowerCase().split("(,| )+".toRegex())
+        var command : ICommand = factory(tokens.toTypedArray())
 
-        try {
-            when(tokens.first()) {
-
-                "place" -> {
-                    robot = Place(*tokens.toTypedArray()).exec(robot)
-                }
-                "right" -> {
-
-                }
-                "report" -> {
-                    println(robot)
-                }
-                else -> {
-                    println("Unknown Command:" + tokens.toString())
-                }
-            }
-        }
-        catch (e: IllegalArgumentException) {
-            println("Invalid Command Arguments:" + tokens.toString())
-        }
-        println(robot)
+        robot = command.exec(robot)
     }
 }
