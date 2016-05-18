@@ -1,6 +1,5 @@
-package robot
+package robot.commands
 
-import robot.commands.*
 import java.lang.reflect.InvocationTargetException
 
 fun Factory(args: Array<String>): ICommand {
@@ -13,12 +12,6 @@ fun Factory(args: Array<String>): ICommand {
         return command
     }
     catch (e: InvocationTargetException) {
-        return NullCommand(*args)
-    }
-    catch (e: IllegalArgumentException) {
-        return NullCommand(*args)
-    }
-    catch (e: ArrayIndexOutOfBoundsException) {
         return NullCommand(*args)
     }
     catch (e: ClassNotFoundException) {

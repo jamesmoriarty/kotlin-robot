@@ -1,5 +1,6 @@
-import robot.Factory
+
 import robot.Robot
+import robot.commands.Factory
 import robot.commands.ICommand
 
 fun main(args: Array<String>) {

@@ -4,17 +4,17 @@ import org.junit.Assert
 import org.junit.Test
 import robot.Direction
 import robot.Robot
-import robot.commands.LeftCommand
+import robot.commands.RightCommand
 
-class LeftCommandTest {
+class RightCommandTest {
     @Test
     fun testExecFail() {
-        Assert.assertEquals(LeftCommand("Left").exec(null), null)
+        Assert.assertEquals(RightCommand("Left").exec(null), null)
     }
 
     @Test
     fun testExecSuccess() {
         var robot = Robot(Direction.NORTH, 1, 1)
-        Assert.assertEquals(LeftCommand("Left").exec(robot), Robot(Direction.WEST, 1, 1))
+        Assert.assertEquals(RightCommand("Left").exec(robot), Robot(Direction.EAST, 1, 1))
     }
 }

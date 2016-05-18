@@ -2,8 +2,9 @@ package robot.test
 
 import org.junit.Assert
 import org.junit.Test
-import robot.Factory
-import robot.commands.*
+import robot.commands.Factory
+import robot.commands.NullCommand
+import robot.commands.PlaceCommand
 
 class FactoryTest {
     @Test
@@ -18,7 +19,17 @@ class FactoryTest {
     }
 
     @Test
-    fun testFactoryFail() {
-        Assert.assertTrue(Factory(arrayOf("")) is NullCommand)
+    fun testFactoryNoCommand() {
+        Assert.assertTrue(Factory(arrayOf("YOLO")) is NullCommand)
+    }
+
+    @Test
+    fun testFactoryWrongNumberOfArgs() {
+        Assert.assertTrue(Factory(arrayOf("Place")) is NullCommand)
+    }
+
+    @Test
+    fun testFactoryInvalidArg() {
+        Assert.assertTrue(Factory(arrayOf("Place", "SOUTHWEST", "1", "1")) is NullCommand)
     }
 }
