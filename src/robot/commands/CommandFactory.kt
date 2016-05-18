@@ -2,7 +2,7 @@ package robot.commands
 
 import java.lang.reflect.InvocationTargetException
 
-fun Factory(args: Array<String>): ICommand {
+fun CommandFactory(args: Array<String>): ICommand {
     try {
         var className          = "${args.first().capitalize()}Command"
         var packageName        = ICommand::class.java.getPackage().getName()
