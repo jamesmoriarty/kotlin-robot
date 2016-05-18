@@ -4,7 +4,7 @@ import robot.Robot
 
 class ReportCommand(vararg args: String) : ICommand {
     override fun exec(robot: Robot?): Robot? {
-      println(robot)
+        robot?.let { println("${robot.direction} ${robot.x} ${robot.y}") }
 
       return robot
     }
