@@ -1,7 +1,7 @@
 package robot.commands
 
-import robot.Robot
 import robot.Direction
+import robot.Robot
 import robot.isOnBoard
 
 class PlaceCommand(vararg args: String) : ICommand {
@@ -17,5 +17,18 @@ class PlaceCommand(vararg args: String) : ICommand {
         } else {
             return robot
         }
+    }
+
+    override fun equals(other: Any?): Boolean{
+        if (this === other) return true
+        if (other?.javaClass != javaClass) return false
+
+        other as PlaceCommand
+
+        if (x         != other.x)         return false
+        if (y         != other.y)         return false
+        if (direction != other.direction) return false
+
+        return true
     }
 }

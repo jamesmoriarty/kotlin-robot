@@ -10,12 +10,8 @@ class CommandFactoryTest {
     @Test
     fun testFactorySuccess() {
         val args = arrayOf("place", "WEST", "1", "1")
-        val a    = PlaceCommand(*args)
-        val b    = CommandFactory(args) as PlaceCommand
 
-        Assert.assertTrue(a.x.equals(b.x))
-        Assert.assertTrue(a.y.equals(b.y))
-        Assert.assertTrue(a.direction.equals(b.direction))
+        Assert.assertTrue(PlaceCommand(*args).equals(CommandFactory(args) as PlaceCommand))
     }
 
     @Test
