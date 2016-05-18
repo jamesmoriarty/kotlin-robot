@@ -7,8 +7,8 @@ fun main(args: Array<String>) {
     var robot: Robot? = null
 
     while(true) {
-        var tokens             = readLine()!!.toLowerCase().split("(,| )+".toRegex())
-        var command : ICommand = CommandFactory(tokens.toTypedArray())
+        var tokens             = readLine()!!.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
+        var command : ICommand = CommandFactory(tokens)
 
         robot = command.exec(robot)
     }
