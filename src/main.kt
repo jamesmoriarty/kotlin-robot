@@ -1,7 +1,6 @@
-
 import robot.Factory
-import robot.ICommand
 import robot.Robot
+import robot.commands.ICommand
 
 fun main(args: Array<String>) {
     var robot: Robot? = null

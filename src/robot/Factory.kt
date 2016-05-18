@@ -1,5 +1,6 @@
 package robot
 
+import robot.commands.*
 import java.lang.reflect.InvocationTargetException
 
 fun Factory(args: Array<String>): ICommand {

@@ -1,4 +1,7 @@
-package robot
+package robot.commands
+
+import robot.Robot
+import robot.rotatedDirection
 
 class LeftCommand(vararg args: String) : ICommand {
     override fun exec(robot: Robot?): Robot? {

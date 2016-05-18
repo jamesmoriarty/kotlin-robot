@@ -1,4 +1,8 @@
-package robot
+package robot.commands
+
+import robot.Direction
+import robot.Robot
+import robot.isOnBoard
 
 class MoveCommand(vararg args: String) : ICommand {
     override fun exec(robot: Robot?): Robot? {
