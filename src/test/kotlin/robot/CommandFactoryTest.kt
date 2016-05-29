@@ -1,4 +1,4 @@
-package test
+package robot
 
 import org.junit.Assert
 import org.junit.Test
@@ -9,9 +9,7 @@ import robot.commands.PlaceCommand
 class CommandFactoryTest {
     @Test
     fun testFactorySuccess() {
-        val args = arrayOf("place", "WEST", "1", "1")
-
-        Assert.assertTrue(PlaceCommand(*args).equals(CommandFactory(args) as PlaceCommand))
+        Assert.assertTrue(PlaceCommand(Direction.WEST, 1, 1).equals(CommandFactory(arrayOf("place", "WEST", "1", "1"))))
     }
 
     @Test

@@ -7,8 +7,8 @@ enum class Direction {
 }
 
 fun rotatedDirection(direction: Direction, step: Int): Direction {
-    var index   = Direction.values().indexOf(direction)
-    var compass = Direction.values().asList()
+    val index = Direction.values().indexOf(direction)
+    val compass = Direction.values().asList()
 
     Collections.rotate(compass, step)
 

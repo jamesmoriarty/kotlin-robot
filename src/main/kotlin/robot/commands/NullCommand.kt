@@ -2,9 +2,9 @@ package robot.commands
 
 import robot.Robot
 
-class NullCommand(vararg args: String) : ICommand {
+class NullCommand(val error: String) : ICommand {
     override fun exec(robot: Robot?): Robot? {
-      println("INVALID COMMAND")
+        println("INVALID COMMAND: $error")
 
       return robot
     }
