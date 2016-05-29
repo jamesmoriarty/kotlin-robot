@@ -30,6 +30,7 @@ class PlaceCommand(var direction: Direction, val x: Int, val y: Int) : ICommand 
 
     // Read about contract between hashcode and equals
     // And i think rewrite it to `data class`
+    // Because data classes already have implemented hashCode/equals methods
     override fun hashCode(): Int {
         var result = direction.hashCode()
         result = 31 * result + x

@@ -17,7 +17,7 @@ fun CommandFactory(args: Array<String>): ICommand {
             if (args.size == 4) {
                 return PlaceCommand(direction, args[2].toInt(), args[3].toInt())
             } else {
-                NullCommand("Invalid direction")
+                NullCommand("Invalid coordinates")
             }
         }
         "LEFT" -> LeftCommand()

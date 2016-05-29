@@ -9,6 +9,7 @@ fun main(args: Array<String>) {
     while (true) {
         print("> ")
 
+        // var -> val - Intellij Idea inspection
         val input = readLine() ?: exitProcess(1)
         val tokens = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
         val command: ICommand = CommandFactory(tokens)
