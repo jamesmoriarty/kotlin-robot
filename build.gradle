@@ -1,0 +1,29 @@
+apply plugin: "kotlin"
+
+buildscript {
+    ext {
+        kotlin = '1.0.2'
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin"
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin"
+    testCompile "junit:junit:4.12"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.13"
+    distributionUrl = "http://services.gradle.org/distributions/gradle-${gradleVersion}-bin.zip"
+}

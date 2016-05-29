@@ -1,9 +1,7 @@
-package test
+package robot
 
 import org.junit.Assert
 import org.junit.Test
-import robot.Direction
-import robot.Robot
 import robot.commands.RightCommand
 
 class RightCommandTest {
@@ -14,7 +12,7 @@ class RightCommandTest {
 
     @Test
     fun testExecSuccess() {
-        var robot = Robot(Direction.NORTH, 1, 1)
+        val robot = Robot(Direction.NORTH, 1, 1)
         Assert.assertEquals(RightCommand("Left").exec(robot), Robot(Direction.EAST, 1, 1))
     }
 }
