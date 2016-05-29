@@ -1,20 +1,31 @@
 package robot.commands
 
-import java.lang.reflect.InvocationTargetException
+import robot.Direction
 
 fun CommandFactory(args: Array<String>): ICommand {
-    try {
-        var className          = "${args.first().capitalize()}Command"
-        var packageName        = ICommand::class.java.getPackage().getName()
-        var commandClass       = Class.forName("$packageName.$className").kotlin
-        var command : ICommand = commandClass.constructors.first().call(args) as ICommand
+    // My opinion here, that matching over string much more nice and cleaner sollution here:
+    val (command) = args;
 
-        return command
+    return when (command.toUpperCase()) {
+        "PLACE" -> {
+            val direction = try {
+                Direction.valueOf(args[1].toUpperCase())
+            } catch (e: Exception) {
+                return NullCommand("Invalid direction")
+            }
+
+            if (args.size == 4) {
+                return PlaceCommand(direction, args[2].toInt(), args[3].toInt())
+            } else {
+                NullCommand("Invalid direction")
+            }
+        }
+        "LEFT" -> LeftCommand()
+        "RIGHT" -> RightCommand()
+        "REPORT" -> ReportCommand()
+        "MOVE" -> MoveCommand()
+        "STOP" -> StopCommand()
+        else -> NullCommand("Invalid command")
     }
-    catch (e: InvocationTargetException) {
-        return NullCommand(*args)
-    }
-    catch (e: ClassNotFoundException) {
-        return NullCommand(*args)
-    }
+
 }

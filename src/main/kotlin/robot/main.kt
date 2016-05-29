@@ -9,9 +9,9 @@ fun main(args: Array<String>) {
     while (true) {
         print("> ")
 
-        var input = readLine() ?: exitProcess(1)
-        var tokens = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
-        var command: ICommand = CommandFactory(tokens)
+        val input = readLine() ?: exitProcess(1)
+        val tokens = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
+        val command: ICommand = CommandFactory(tokens)
 
         robot = command.exec(robot)
     }
