@@ -1,9 +1,7 @@
-package test
+package robot
 
 import org.junit.Assert
 import org.junit.Test
-import robot.Direction
-import robot.Robot
 import robot.commands.MoveCommand
 
 class MoveCommandTest {
