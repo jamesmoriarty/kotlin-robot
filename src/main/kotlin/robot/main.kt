@@ -6,12 +6,12 @@ import kotlin.system.exitProcess
 fun main(args: Array<String>) {
     var robot: Robot? = null
 
-    while(true) {
+    while (true) {
         print("> ")
 
-        var input              = readLine() ?: exitProcess(1)
-        var tokens             = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
-        var command : ICommand = CommandFactory(tokens)
+        var input = readLine() ?: exitProcess(1)
+        var tokens = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
+        var command: ICommand = CommandFactory(tokens)
 
         robot = command.exec(robot)
     }
