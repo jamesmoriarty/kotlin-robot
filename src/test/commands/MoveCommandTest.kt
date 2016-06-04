@@ -1,4 +1,4 @@
-package test
+package test.commands
 
 import org.junit.Assert
 import org.junit.Test
@@ -8,18 +8,18 @@ import robot.commands.MoveCommand
 
 class MoveCommandTest {
     @Test
-    fun testExecNull() {
+    fun execNull() {
         Assert.assertEquals(MoveCommand("Move").exec(null), null)
     }
 
     @Test
-    fun testExecFail() {
+    fun execFail() {
         var robot = Robot(Direction.NORTH, 1, 4)
         Assert.assertEquals(MoveCommand("Move").exec(robot), Robot(Direction.NORTH, 1, 4))
     }
 
     @Test
-    fun testExecSuccess() {
+    fun execSuccess() {
         var robot = Robot(Direction.NORTH, 1, 1)
         Assert.assertEquals(MoveCommand("Move").exec(robot), Robot(Direction.NORTH, 1, 2))
     }

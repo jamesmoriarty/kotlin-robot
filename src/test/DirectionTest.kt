@@ -6,17 +6,17 @@ import robot.Direction
 
 class DirectionTest {
     @Test
-    fun testRotatedDirectionLeft() {
+    fun rotateDirectionLeft() {
         Assert.assertEquals(Direction.NORTH.rotate(1), Direction.WEST)
     }
 
     @Test
-    fun testRotatedDirectionRight() {
+    fun rotateDirectionRight() {
         Assert.assertEquals(Direction.NORTH.rotate(-1), Direction.EAST)
     }
 
     @Test
-    fun testRotatedDirectionLoop() {
+    fun rotateDirectionLoop() {
         Assert.assertEquals(Direction.NORTH.rotate(4), Direction.NORTH)
     }
 }

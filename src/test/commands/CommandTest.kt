@@ -1,4 +1,4 @@
-package test
+package test.commands
 
 import org.junit.Assert
 import org.junit.Test
@@ -8,24 +8,24 @@ import robot.commands.PlaceCommand
 
 class CommandTest {
     @Test
-    fun testFactorySuccess() {
+    fun factorySuccess() {
         val args = arrayOf("place", "WEST", "1", "1")
 
         Assert.assertTrue(PlaceCommand(*args).equals(Command.factory(args) as PlaceCommand))
     }
 
     @Test
-    fun testFactoryNoCommand() {
+    fun factoryNoCommand() {
         Assert.assertTrue(Command.factory(arrayOf("YOLO")) is NullCommand)
     }
 
     @Test
-    fun testFactoryWrongNumberOfArgs() {
+    fun factoryWrongNumberOfArgs() {
         Assert.assertTrue(Command.factory(arrayOf("Place")) is NullCommand)
     }
 
     @Test
-    fun testFactoryInvalidArg() {
+    fun factoryInvalidArg() {
         Assert.assertTrue(Command.factory(arrayOf("Place", "SOUTHWEST", "1", "1")) is NullCommand)
     }
 }

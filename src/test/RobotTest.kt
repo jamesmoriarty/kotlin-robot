@@ -7,29 +7,28 @@ import robot.Direction
 import robot.Robot
 
 class RobotTest {
-
     @Test
-    fun testIsOnBoardTop() {
+    fun isOnBoardTop() {
         Assert.assertFalse(Robot(Direction.NORTH, 0, 1, Board(1, 1)).isOnBoard())
     }
 
     @Test
-    fun testIsOnBoardRight() {
+    fun isOnBoardRight() {
         Assert.assertFalse(Robot(Direction.NORTH, 1, 0, Board(1, 1)).isOnBoard())
     }
 
     @Test
-    fun testIsOnBoardBottom() {
+    fun isOnBoardBottom() {
         Assert.assertFalse(Robot(Direction.NORTH, 0, -1, Board(1, 1)).isOnBoard())
     }
 
     @Test
-    fun testIsOnBoardLeft() {
+    fun isOnBoardLeft() {
         Assert.assertFalse(Robot(Direction.NORTH, -1, 0, Board(1, 1)).isOnBoard())
     }
 
     @Test
-    fun testIsOnBoard() {
+    fun isOnBoard() {
         Assert.assertTrue(Robot(Direction.NORTH, 0, 0, Board(1, 1)).isOnBoard())
     }
 }

@@ -1,4 +1,4 @@
-package test
+package test.commands
 
 import org.junit.Assert
 import org.junit.Test
@@ -8,12 +8,12 @@ import robot.Robot
 
 class PlaceCommandTest {
     @Test
-    fun testExecFail() {
+    fun execFail() {
         Assert.assertEquals(PlaceCommand("PLACE","WEST", "-1", "-1").exec(null), null)
     }
 
     @Test
-    fun testExecSuccess() {
+    fun execSuccess() {
         Assert.assertEquals(PlaceCommand("PLACE","WEST", "1", "1").exec(null), Robot(Direction.WEST, 1, 1))
     }
 }
