@@ -1,14 +1,11 @@
 package robot.commands
 
 import robot.Robot
-import robot.rotatedDirection
 
-class RightCommand(vararg args: String) : ICommand {
+class RightCommand(vararg args: String) : Command {
     override fun exec(robot: Robot?): Robot? {
         return robot?.let({
-            var direction = rotatedDirection(robot.direction, -1)
-
-            return Robot(direction, it.x, it.y, it.board)
+            return it.copy(direction = it.direction.rotate(-1))
         })
     }
 }

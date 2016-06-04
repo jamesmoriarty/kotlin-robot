@@ -2,19 +2,18 @@ package robot.commands
 
 import robot.Direction
 import robot.Robot
-import robot.isOnBoard
 
-class MoveCommand(vararg args: String) : ICommand {
+class MoveCommand(vararg args: String) : Command {
     override fun exec(robot: Robot?): Robot? {
         return robot?.let({
-            var newRobot = when (it.direction) {
-                Direction.NORTH -> Robot(it.direction, it.x, it.y + 1, it.board)
-                Direction.EAST -> Robot(it.direction, it.x + 1, it.y, it.board)
-                Direction.SOUTH -> Robot(it.direction, it.x, it.y - 1, it.board)
-                Direction.WEST -> Robot(it.direction, it.x - 1, it.y, it.board)
+            val newRobot = when (it.direction) {
+                Direction.NORTH -> it.copy(y = it.y + 1)
+                Direction.EAST  -> it.copy(x = it.x + 1)
+                Direction.SOUTH -> it.copy(y = it.y - 1)
+                Direction.WEST  -> it.copy(x = it.x - 1)
             }
 
-            if(isOnBoard(newRobot)) {
+            if(newRobot.isOnBoard()) {
                 return newRobot
             } else {
                 return robot

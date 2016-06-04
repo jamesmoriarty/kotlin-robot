@@ -2,9 +2,8 @@ package robot.commands
 
 import robot.Direction
 import robot.Robot
-import robot.isOnBoard
 
-class PlaceCommand(vararg args: String) : ICommand {
+class PlaceCommand(vararg args: String) : Command {
     var direction: Direction = Direction.valueOf(args[1].toUpperCase())
     var x: Int               = args[2].toInt()
     var y: Int               = args[3].toInt()
@@ -12,7 +11,7 @@ class PlaceCommand(vararg args: String) : ICommand {
     override fun exec(robot: Robot?): Robot? {
         var newRobot = Robot(direction, x, y)
 
-        if (isOnBoard(newRobot)) {
+        if (newRobot.isOnBoard()) {
             return newRobot
         } else {
             return robot

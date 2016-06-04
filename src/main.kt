@@ -1,7 +1,5 @@
 import robot.Robot
-import robot.commands.CommandFactory
-import robot.commands.ICommand
-import kotlin.system.exitProcess
+import robot.commands.Command
 
 fun main(args: Array<String>) {
     var robot: Robot? = null
@@ -9,9 +7,9 @@ fun main(args: Array<String>) {
     while(true) {
         print("> ")
 
-        var input              = readLine() ?: exitProcess(1)
-        var tokens             = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
-        var command : ICommand = CommandFactory(tokens)
+        val input             = readLine() ?: break
+        val args              = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
+        val command : Command = Command.factory(args)
 
         robot = command.exec(robot)
     }
