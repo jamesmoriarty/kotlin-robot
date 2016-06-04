@@ -6,7 +6,7 @@ import robot.commands.Command
 import robot.commands.NullCommand
 import robot.commands.PlaceCommand
 
-class CommandFactoryTest {
+class CommandTest {
     @Test
     fun testFactorySuccess() {
         val args = arrayOf("place", "WEST", "1", "1")
