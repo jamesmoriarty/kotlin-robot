@@ -5,7 +5,6 @@ import org.junit.Test
 import robot.Board
 import robot.Direction
 import robot.Robot
-import robot.isOnBoard
 
 class RobotTest {
 
