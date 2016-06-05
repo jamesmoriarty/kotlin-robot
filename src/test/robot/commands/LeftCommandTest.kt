@@ -1,4 +1,4 @@
-package test.commands
+package test.robot.commands
 
 import org.junit.Assert
 import org.junit.Test
