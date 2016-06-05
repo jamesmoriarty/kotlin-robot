@@ -2,15 +2,10 @@ import robot.Robot
 import robot.commands.Command
 
 fun main(args: Array<String>) {
-    var robot: Robot? = null
+    generateSequence { readLine() }.fold<String, Robot?>(null, { robot, input ->
+        val arguments        = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
+        val command: Command = Command.factory(arguments)
 
-    while(true) {
-        print("> ")
-
-        val input             = readLine() ?: break
-        val args              = input.toLowerCase().split("(,| )+".toRegex()).toTypedArray()
-        val command : Command = Command.factory(args)
-
-        robot = command.exec(robot)
-    }
+        command.exec(robot)
+    })
 }
